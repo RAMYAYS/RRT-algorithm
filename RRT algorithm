@@ -1,0 +1,37 @@
+import numpy as np
+from random import random
+import matplotlib.pyplot as plt
+from matplotlib import collections  as mc
+from collections import deque
+
+def distance(x, y):
+    return np.linalg.norm(np.array(x) - np.array(y))
+def isInObstacle(vex, obstacles, radius):
+    for obs in obstacles:
+        if distance(obs, vex) < radius:
+            return True
+    return False
+def isThruObstacle(line, obstacles, radius):
+    for obs in obstacles:
+        if Intersection(line, obs, radius):
+            return True
+    return False
+def nearest(G, vex, obstacles, radius):
+    Nvex = None
+    Nidx = None
+    minDist = float("inf")
+    for idx, v in enumerate(G.vertices):
+        line = Line(v, vex)
+        if isThruObstacle(line, obstacles, radius):
+            continue
+            dist = distance(v, vex)
+       return Nvex, Nidx
+if __name__ == '__main__':
+    startpos = (0., 0.)
+    endpos = (5., 5.)
+    obstacles = [(1., 1.), (2., 2.)]
+    n_iter = 200
+    radius = 0.5
+    stepSize = 0.7
+
+    
